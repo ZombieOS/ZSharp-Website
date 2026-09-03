@@ -63,6 +63,7 @@
     system.addEventListener('change', updateDownload);
     architecture.addEventListener('change', updateDownload);
     if (testApp) testApp.href = config.testAppUrl;
+    if (testGame) testGame.href = config.testGameUrl;
     updateDownload();
   }
 

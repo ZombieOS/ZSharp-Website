@@ -3,5 +3,5 @@ window.ZSharpSite = Object.freeze({
   version: '1.0.2.0',
   installerRoot: 'https://www.zsharp.zombieos.com/assets/download/installers',
   testAppUrl: 'https://www.zsharp.zombieos.com/assets/download/ZSharp-Test-App.zapp',
-  testGameURL: 'https://www.zsharp.zombieos.com/assets/download/ZSharpGameTest.zgame',
+  testGameUrl: 'https://www.zsharp.zombieos.com/assets/download/ZSharpGameTest.zgame',
 });
