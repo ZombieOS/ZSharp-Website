@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download the Z# Virtual Machine for Windows, Linux, and macOS.">
+  <link rel="icon" href="zsharp.png">
+  <link rel="stylesheet" href="Style.css">
+  <script src="Main.js" defer></script>
+  <script src="Script.js" defer></script>
+  <title>Download Z#</title>
+</head>
+<body data-title="Download Z# {version}">
+  <main>
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="Z# home"><img src="zsharp.png" alt=""><span>Z#</span></a>
+      <div class="navLinks"><a href="/">Home</a><a href="/docs">Docs</a><a class="active" href="/download">Download</a></div>
+      <a class="navCta" href="/download">Get Z# <span aria-hidden="true">→</span></a>
+    </nav>
+
+    <header class="downloadHero shell">
+      <div><p class="sectionLabel">Z# VIRTUAL MACHINE</p><h1>One small install.<br><span>A new way to build.</span></h1></div>
+      <p>The installer chooses the right ZVM for your computer, adds the <code>zsharp</code> command, and registers <code>.zapp</code> and <code>.zgame</code> files.</p>
+    </header>
+
+    <section class="downloadSection shell">
+      <div class="downloadCard">
+        <div class="downloadIcon"><img src="zsharp.png" width="130" height="130" alt="Z# icon"></div>
+        <div class="downloadInfo">
+          <p class="sectionLabel">LATEST STABLE RELEASE</p>
+          <h2>ZVM <span data-zsharp-version></span></h2>
+          <p id="detected-system">Detecting your system…</p>
+          <div class="downloadSelectors">
+            <label>System
+              <select id="download-system"><option value="windows">Windows</option><option value="linux">Linux</option><option value="macos">macOS</option></select>
+            </label>
+            <label>Processor
+              <select id="download-architecture"><option value="x86_64">Intel / AMD 64-bit</option><option value="aarch64">ARM64</option></select>
+            </label>
+          </div>
+          <a class="downloadButton" id="installer-download" href="#">Download <span>↓</span></a>
+        </div>
+      </div>
+
+      <div class="afterInstall">
+        <div><span class="stepBadge">AFTER INSTALLING</span><h3>Want to download our test app?</h3><p>To test if it installed correctly!</p></div>
+        <a id="test-app-download" href="#">Download Test App <span>→</span></a>
+        <div><span class="stepBadge">AFTER INSTALLING</span><h3>Want to download our test game?</h3><p>To test if it installed correctly!</p></div>
+        <a id="test-game-download" href="#">Download Test Game <span>→</span></a>
+      </div>
+
+      <div class="installSteps">
+        <article><span>01</span><h3>Download</h3><p>The page automatically selects Windows, Linux, or macOS. You can change it above.</p></article>
+        <article><span>02</span><h3>Install</h3><p>Run the installer. It securely downloads and verifies the current ZVM for your processor.</p></article>
+        <article><span>03</span><h3>Test</h3><p>Open the Z# Test App when prompted. If its window launches, the ZVM is ready.</p></article>
+      </div>
+
+      <div class="terminalCard"><div class="terminalTop"><i></i><i></i><i></i><span>terminal</span></div><code><b>$</b> zsharp --version<br><span>Z# <span data-zsharp-version></span></span></code></div>
+      <p class="downloadFinePrint">Linux and macOS downloads may need executable permission before launch. Early installers are not yet code-signed, so your operating system may show an unknown-publisher warning.</p>
+    </section>
+
+    <footer class="footer shell">
+      <div class="footerIdentity"><strong>Z# <span data-zsharp-version></span></strong><span>Windows · Linux · macOS</span></div>
+      <nav class="footerLinks" aria-label="Official links"><span>LINKS</span><a href="https://www.zombieos.com/" target="_blank" rel="noreferrer">ZombieOS <b>↗</b></a><a href="https://www.discord.com/invite/vyc729qvh5" target="_blank" rel="noreferrer">Z# Discord <b>↗</b></a></nav>
+    </footer>
+  </main>
+</body>
+</html>
