@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How the Z# website, ZVM, updater, and Hub handle information.">
+  <link rel="icon" href="zsharp.png?v=1.0.2.0">
+  <link rel="stylesheet" href="Style.css?v=1.0.2.0">
+  <script src="Main.js?v=1.0.2.0" defer></script>
+  <script src="Script.js?v=1.0.2.0" defer></script>
+  <title>Privacy Policy — Z#</title>
+</head>
+<body>
+  <main>
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="Z# home"><img src="zsharp.png?v=1.0.2.0" alt=""><span>Z#</span></a>
+      <div class="navLinks"><a href="/">Home</a><a href="/docs">Docs</a><a href="/download">Download</a></div>
+      <a class="navCta" href="/download">Get Z# <span aria-hidden="true">→</span></a>
+    </nav>
+
+    <header class="docsHero shell">
+      <p class="sectionLabel">EFFECTIVE SEPTEMBER 4, 2026</p>
+      <h1>Privacy without<br><span>the mystery.</span></h1>
+      <p>This policy explains what the official Z# website and software communicate, what stays on your device, and which outside services are involved.</p>
+    </header>
+
+    <div class="docsLayout shell">
+      <aside class="docsRail">
+        <span>ON THIS PAGE</span>
+        <a href="#scope">Scope</a><a href="#website">Website</a><a href="#updates">Updates</a>
+        <a href="#local-data">Local data</a><a href="#third-parties">Third parties</a>
+        <a href="#retention">Retention</a><a href="#choices">Your choices</a><a href="#contact">Contact</a>
+      </aside>
+
+      <article class="docsContent">
+        <section id="scope">
+          <div class="docNumber">01</div><h2>Scope</h2>
+          <p>This policy applies to the official Z# website, Z# Virtual Machine (ZVM), bootstrap installer, automatic updater, and Z# Hub provided by ZombieOS. It does not govern apps, games, packages, websites, or services created by independent Z# developers.</p>
+        </section>
+
+        <section id="website">
+          <div class="docNumber">02</div><h2>Website information</h2>
+          <p>The Z# website does not provide user accounts, advertising, analytics scripts, contact forms, or first-party tracking cookies. ZombieOS does not intentionally collect names, email addresses, or other personal details merely because someone visits the site.</p>
+          <p>The site is hosted using GitHub Pages. GitHub records visitors&apos; IP addresses for security and may process ordinary request information such as the requested page, time, browser, and referring page under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer">GitHub Privacy Statement</a>.</p>
+        </section>
+
+        <section id="updates">
+          <div class="docNumber">03</div><h2>ZVM downloads and updates</h2>
+          <p>The installer and updater contact <code>www.zsharp.zombieos.com</code> to request the current release manifest and download verified ZVM files. The request identifies the installed Z# version and operating-system family so the service can return the appropriate update. No Z# account, advertising identifier, project source code, or unique device identifier is sent by the updater.</p>
+          <p>On Windows, the update agent can run at sign-in and check periodically while active. A normal web request necessarily exposes network information such as an IP address to the hosting provider. Downloading the optional test app or game occurs only when the user chooses its download.</p>
+          <div class="docNote"><strong>Update control.</strong> The Windows update agent can be exited from its system-tray menu and disabled from the operating system&apos;s Startup Apps settings.</div>
+        </section>
+
+        <section id="local-data">
+          <div class="docNumber">04</div><h2>Information stored locally</h2>
+          <p>The Z# Hub keeps its installed-project list, package locations, playtime, and last-played information on the user&apos;s device. Z# does not transmit that Hub information to ZombieOS. Project source files, compiled packages, and text entered into an app remain local unless that app or its developer explicitly implements an outside service.</p>
+        </section>
+
+        <section id="third-parties">
+          <div class="docNumber">05</div><h2>Third-party projects and links</h2>
+          <p>Z# projects may include independent dependencies or connect to outside services. Those projects and services are responsible for their own privacy practices. Links to ZombieOS, Discord, GitHub, and other websites take visitors to services governed by their respective policies.</p>
+        </section>
+
+        <section id="retention">
+          <div class="docNumber">06</div><h2>Retention and security</h2>
+          <p>ZombieOS does not maintain a separate database of Z# website visitors. Information stored locally by the Z# Hub remains until the project is forgotten, its data is removed, or Z# is uninstalled. Hosting-provider security logs are retained and protected according to the provider&apos;s policies.</p>
+        </section>
+
+        <section id="choices">
+          <div class="docNumber">07</div><h2>Your choices</h2>
+          <p>You may use the documentation without installing Z#. You may exit or disable the update agent, remove locally registered projects from the Hub, and uninstall Z# or a packaged project. Browser privacy controls can manage any storage created by external websites.</p>
+        </section>
+
+        <section id="contact">
+          <div class="docNumber">08</div><h2>Questions and changes</h2>
+          <p>Questions about this policy can be sent to <a href="mailto:jack.johnson@zombieos.com">jack.johnson@zombieos.com</a>. Material changes will be posted on this page with a revised effective date.</p>
+        </section>
+      </article>
+    </div>
+
+    <footer class="footer shell">
+      <div class="footerIdentity"><strong>Z# <span data-zsharp-version></span></strong><span>Privacy Policy · Effective September 4, 2026</span></div>
+      <nav class="footerLinks" aria-label="Official links"><span>LINKS</span><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="https://www.zombieos.com/" target="_blank" rel="noreferrer">ZombieOS <b>↗</b></a><a href="https://www.discord.com/invite/vyc729qvh5" target="_blank" rel="noreferrer">Z# Discord <b>↗</b></a></nav>
+    </footer>
+  </main>
+</body>
+</html>
