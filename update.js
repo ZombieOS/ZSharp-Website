@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "latestVersion": "1.0.2.2",
+  "latestVersion": "1.0.2.3",
   "channel": "stable",
   "download": {
     "url": "https://www.zsharp.zombieos.com/assets/download/ZVM-LATEST.zip",
