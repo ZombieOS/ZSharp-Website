@@ -4,42 +4,42 @@
   "channel": "stable",
   "download": {
     "url": "https://www.zsharp.zombieos.com/assets/download/ZVM-LATEST.zip",
-    "sha256": "cbb47b52dc170fbd2f8a74dcc1f3becfc2fc111bac13cefaf2f678f19108becd",
-    "size": 44194994
+    "sha256": "88f0f96150f4e11f3f1a5e5541d3c2e8c4ef01f7fc7ee7f12b45e30715b12194",
+    "size": 44183018
   },
   "platforms": {
     "windows-x86_64": {
       "path": "runtimes/windows-x86_64/zsharp.exe",
-      "sha256": "737d0ec3a62226a72b2b38c00d622bb47e84335df840a1c6960dfc8f641c74d1",
-      "size": 3042304
+      "sha256": "9c5c6bc61a240e53ac69f290f3710757b263769a80d3ebdcc7b920cc66ea30b9",
+      "size": 3050496
     },
     "windows-aarch64": {
       "path": "runtimes/windows-aarch64/zsharp.exe",
-      "sha256": "4aa9520e4dacd3a87846df23b4057657df5336ab903a0c10456c14fb5bf9cc08",
-      "size": 2855424
+      "sha256": "7825e20d29bf3baa7cb3bdbe20412948cbef9f4586358a757ec375ff14af74bb",
+      "size": 2865152
     },
     "linux-x86_64": {
       "path": "runtimes/linux-x86_64/zsharp",
-      "sha256": "1aaeefea414a2941c401c5147d6310e9012ee624c7685ba4a74a8a0f4c2e07f7",
-      "size": 4959016
+      "sha256": "2feeed088e8508d74307cb2461ff567e0a198ed5252913dd019acaae84080015",
+      "size": 4968072
     },
     "linux-aarch64": {
       "path": "runtimes/linux-aarch64/zsharp",
-      "sha256": "9642aedaa68b760fc3465b2f134b96d581f4e1e396e1ea451e736626d7c96160",
-      "size": 4732384
+      "sha256": "49e9ba49c306afa03967d88c39b948cc6892e83bc50b1426c79c268eabba53cc",
+      "size": 4667008
     },
     "macos-x86_64": {
       "path": "runtimes/macos-x86_64/zsharp",
-      "sha256": "0623df12801d893b928801b3cda6f7e0e30466ffed310b30141c19ce57181067",
-      "size": 3505840,
+      "sha256": "b0a37333a32561b4c30e1ba8df33bcbe1098412a313c60b2f25854012e221717",
+      "size": 3514920,
       "supportPath": "runtimes/macos-x86_64/libMoltenVK.dylib",
       "supportSha256": "aef00b13bcc808adf15b85bef9ae67393d92be7ed5dfe41cad16fa809e4a4c5f",
       "supportSize": 10925552
     },
     "macos-aarch64": {
       "path": "runtimes/macos-aarch64/zsharp",
-      "sha256": "13a0ea7fab4b5d9d8dd336b8ccabefabf9bdcfba1a0647f47597bb1c933ba0b6",
-      "size": 3247768,
+      "sha256": "2d083fd26029e56336d38be07758d7ad970cdd73f17dd781ac44184b9d179794",
+      "size": 3265112,
       "supportPath": "runtimes/macos-aarch64/libMoltenVK.dylib",
       "supportSha256": "aef00b13bcc808adf15b85bef9ae67393d92be7ed5dfe41cad16fa809e4a4c5f",
       "supportSize": 10925552
