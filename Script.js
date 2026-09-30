@@ -61,16 +61,18 @@
       const processorName = processor === 'aarch64' ? 'ARM64' : '64-bit';
 
       const downloadPlatform = platform === 'chromeos' ? 'linux' : platform;
-      const executable = downloadPlatform === 'macos' && hasDesktopSetup()
-        ? `zsharp-setup-${config.version}-${downloadPlatform}-${processor}.app.zip`
-        : downloadPlatform === 'windows' ? 'zsharp-installer.exe' : 'zsharp-installer';
+      const executable = platform === 'chromeos'
+        ? `zsharp-setup-${config.version}-linux-${processor}.deb`
+        : downloadPlatform === 'macos' && hasDesktopSetup()
+          ? `zsharp-setup-${config.version}-${downloadPlatform}-${processor}.app.zip`
+          : downloadPlatform === 'windows' ? 'zsharp-installer.exe' : 'zsharp-installer';
       selection.textContent = platform === 'chromeos'
         ? `ChromeOS Linux environment · ${processorName} · compatibility varies`
         : `Selected for ${platformNames[platform]} · ${processorName}`;
       button.href = `${config.installerRoot}/${config.version}/${downloadPlatform}-${processor}/${executable}`;
       button.removeAttribute('aria-disabled');
       button.firstChild.textContent = platform === 'chromeos'
-        ? 'Download Linux build for ChromeOS '
+        ? 'Download graphical setup for ChromeOS '
         : `Download for ${platformNames[platform]} `;
     }
 
