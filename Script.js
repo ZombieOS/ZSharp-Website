@@ -26,13 +26,19 @@
 
   function detectPlatform() {
     const value = `${navigator.userAgent} ${navigator.userAgentData?.platform || ''}`.toLowerCase();
+    if (value.includes('cros')) return 'chromeos';
     if (value.includes('mac')) return 'macos';
-    if (value.includes('linux') || value.includes('cros')) return 'linux';
+    if (value.includes('linux')) return 'linux';
     return 'windows';
   }
 
   function detectArchitecture() {
     return /arm64|aarch64/i.test(navigator.userAgent) ? 'aarch64' : 'x86_64';
+  }
+
+  function hasDesktopSetup() {
+    const parts = config.version.split('.').map(Number);
+    return parts[0] > 1 || (parts[0] === 1 && parts[1] >= 2);
   }
 
   function setupDownloads() {
@@ -45,19 +51,27 @@
 
     if (!system || !architecture || !button || !selection) return;
 
-    const platformNames = { windows: 'Windows', linux: 'Linux', macos: 'macOS' };
+    const platformNames = { windows: 'Windows', linux: 'Linux', macos: 'macOS', chromeos: 'ChromeOS' };
     system.value = detectPlatform();
     architecture.value = detectArchitecture();
 
     function updateDownload() {
       const platform = system.value;
       const processor = architecture.value;
-      const executable = platform === 'windows' ? 'zsharp-installer.exe' : 'zsharp-installer';
       const processorName = processor === 'aarch64' ? 'ARM64' : '64-bit';
 
-      selection.textContent = `Selected for ${platformNames[platform]} · ${processorName}`;
-      button.href = `${config.installerRoot}/${config.version}/${platform}-${processor}/${executable}`;
-      button.firstChild.textContent = `Download for ${platformNames[platform]} `;
+      const downloadPlatform = platform === 'chromeos' ? 'linux' : platform;
+      const executable = downloadPlatform === 'macos' && hasDesktopSetup()
+        ? `zsharp-setup-${config.version}-${downloadPlatform}-${processor}.app.zip`
+        : downloadPlatform === 'windows' ? 'zsharp-installer.exe' : 'zsharp-installer';
+      selection.textContent = platform === 'chromeos'
+        ? `ChromeOS Linux environment · ${processorName} · compatibility varies`
+        : `Selected for ${platformNames[platform]} · ${processorName}`;
+      button.href = `${config.installerRoot}/${config.version}/${downloadPlatform}-${processor}/${executable}`;
+      button.removeAttribute('aria-disabled');
+      button.firstChild.textContent = platform === 'chromeos'
+        ? 'Download Linux build for ChromeOS '
+        : `Download for ${platformNames[platform]} `;
     }
 
     system.addEventListener('change', updateDownload);

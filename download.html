@@ -6,8 +6,8 @@
   <meta name="description" content="Download the Z# Virtual Machine for Windows, Linux, and macOS.">
   <link rel="icon" href="zsharp.png?v=1.0.2.0">
   <link rel="stylesheet" href="Style.css?v=1.0.2.0">
-  <script src="Main.js?v=1.0.2.0" defer></script>
-  <script src="Script.js?v=1.0.2.0" defer></script>
+  <script src="Main.js?v=1.2.0.0" defer></script>
+  <script src="Script.js?v=1.2.0.0" defer></script>
   <title>Download Z#</title>
 </head>
 <body data-title="Download Z# {version}">
@@ -27,12 +27,12 @@
       <div class="downloadCard">
         <div class="downloadIcon"><img src="zsharp.png?v=1.0.2.0" width="130" height="130" alt="Z# icon"></div>
         <div class="downloadInfo">
-          <p class="sectionLabel">LATEST BETA RELEASE</p>
+          <p class="sectionLabel">LATEST RELEASE</p>
           <h2>ZVM <span data-zsharp-version></span></h2>
           <p id="detected-system">Detecting your system…</p>
           <div class="downloadSelectors">
             <label>System
-              <select id="download-system"><option value="windows">Windows</option><option value="linux">Linux</option><option value="macos">macOS</option></select>
+              <select id="download-system"><option value="windows">Windows</option><option value="linux">Linux</option><option value="macos">macOS</option><option value="chromeos">ChromeOS (Linux environment)</option></select>
             </label>
             <label>Processor
               <select id="download-architecture"><option value="x86_64">Intel / AMD 64-bit</option><option value="aarch64">ARM64</option></select>
@@ -51,12 +51,12 @@
 
       <div class="installSteps">
         <article><span>01</span><h3>Download</h3><p>The page automatically selects Windows, Linux, or macOS. You can change it above.</p></article>
-        <article><span>02</span><h3>Install</h3><p>Run the installer. It securely downloads and verifies the current ZVM for your processor.</p></article>
+        <article><span>02</span><h3>Install</h3><p>Run the installer. It securely downloads and verifies the current ZVM for your processor. Z# 1.2 adds a graphical setup for Windows and macOS.</p></article>
         <article><span>03</span><h3>Test</h3><p>Open the Z# Test App when prompted. If its window launches, the ZVM is ready.</p></article>
       </div>
 
       <div class="terminalCard"><div class="terminalTop"><i></i><i></i><i></i><span>terminal</span></div><code><b>$</b> zsharp --version<br><span>Z# <span data-zsharp-version></span></span></code></div>
-      <p class="downloadFinePrint">Linux and macOS downloads may need executable permission before launch. Early installers are not yet code-signed, so your operating system may show an unknown-publisher warning.</p>
+      <p class="downloadFinePrint">On ChromeOS, enable the Linux development environment before trying the Linux build; app and game compatibility varies by Chromebook. Linux builds target glibc-based Intel/AMD 64-bit and ARM64 systems, not every distro. Linux may require executable permission or a terminal on desktops without Zenity. Early installers are not yet code-signed, so Windows SmartScreen or macOS Gatekeeper may show an unknown-publisher warning.</p>
     </section>
 
     <footer class="footer shell">
