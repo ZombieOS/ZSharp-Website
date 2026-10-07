@@ -1,0 +1,8 @@
+ee8005ac276c51797e57a795d5f61d24c43ad6b93706b905b87da957feaa09db  installers/1.2.1.0/windows-x86_64/zsharp-installer.exe
+a1d28689a5b763e69c88b9362216a03d0820b61fe4b5a1ae396e6d6517327ba9  installers/1.2.1.0/windows-aarch64/zsharp-installer.exe
+e37f6e8f0c167a037853374737c45a76db613333e0113762fb9345b747fa17f6  installers/1.2.1.0/linux-x86_64/zsharp-installer
+d33a9de7ac19029f05eecfd83c33eea86c128dbb7a70a3b5dbdcd4e745993945  installers/1.2.1.0/linux-aarch64/zsharp-installer
+12ff27e9b88ba5edc99023f4be9f838b72784a74bd66ee99a24e69d4f52c6e14  installers/1.2.1.0/macos-x86_64/zsharp-installer
+d5db0c70b3f39619a81ffd12ff66747eb6ac21e8b4022a6f01571a1712c0c101  installers/1.2.1.0/macos-x86_64/zsharp-setup-1.2.1.0-macos-x86_64.app.zip
+515fe2b56ea0707bd3de3b34d4da3f623357934fcaa6d50bee4cdd403c61706a  installers/1.2.1.0/macos-aarch64/zsharp-installer
+17223bdfb958257d599a931ca668cf4db6197a192602093bcb5ab6865e306c0e  installers/1.2.1.0/macos-aarch64/zsharp-setup-1.2.1.0-macos-aarch64.app.zip

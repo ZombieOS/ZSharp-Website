@@ -1,63 +1,63 @@
 {
   "schema": 1,
-  "latestVersion": "1.2.0.1",
+  "latestVersion": "1.2.1.0",
   "channel": "stable",
   "download": {
-    "url": "https://downloads.zsharp.zombieos.com/releases/1.2.0.1/ZVM-LATEST.zip",
-    "sha256": "e36a33845728b0dd1911fd05c36e7a345082182659efb98179b51eefe62cbd85",
-    "size": 210339634
+    "url": "https://downloads.zsharp.zombieos.com/releases/1.2.1.0/ZVM-LATEST.zip",
+    "sha256": "dce3e2462bd1c6b21715ab131bd194fbc1bf10eb5b7ae6519a951d91c3c15491",
+    "size": 211085373
   },
   "platforms": {
     "windows-x86_64": {
       "path": "runtimes/windows-x86_64/zsharp.exe",
-      "sha256": "641cef54960865f2942dc05edac722b91e2fc4fd6a2ffba740a088490475109d",
-      "size": 4802048,
+      "sha256": "9e313d068db47d848238b20540924eb70cc2fd7aba9e00503392ca260bdf1a56",
+      "size": 4911104,
       "pythonPath": "runtimes/windows-x86_64/python-runtime.tar.gz",
-      "pythonSha256": "e214144011bb9795a1209cfeb90e5109e16c790d9e896d37b4171aabd26784a0",
-      "pythonSize": 21597854
+      "pythonSha256": "dccf44da05490863a1ec1c034a7042d8027787cf68a9535be238447e7901687f",
+      "pythonSize": 21597841
     },
     "windows-aarch64": {
       "path": "runtimes/windows-aarch64/zsharp.exe",
-      "sha256": "6a7a1e1a8f572a1ec37b6f488e52233b6fe67e9450878aece31df40ad498882f",
-      "size": 4570624,
+      "sha256": "337b8f92389182f6b215b174e2de7223de5286f5acc1e33c7536ca87d680293d",
+      "size": 4680192,
       "pythonPath": "runtimes/windows-aarch64/python-runtime.tar.gz",
-      "pythonSha256": "7c2932cf8b6f26b3a9f1afdff84786bce491898e272819b8181ebb9ebb4b5eae",
-      "pythonSize": 20367387
+      "pythonSha256": "dc66526ae40341419ed1d4774a14506fc73696b08e2573a7b33878f168a33ed8",
+      "pythonSize": 20367467
     },
     "linux-x86_64": {
       "path": "runtimes/linux-x86_64/zsharp",
-      "sha256": "0fc26b573e9c0409913dbcc9bb1f3d2cf3552d2a18ae3b2e1614e27b1fd0785a",
-      "size": 7322856,
+      "sha256": "46576cacc893369428f779c7af679634fd0cc2f8dd2dd92b0eed8208ac662794",
+      "size": 7466200,
       "pythonPath": "runtimes/linux-x86_64/python-runtime.tar.gz",
-      "pythonSha256": "99a65b169924fd87f17ae768dd85a1e9bf576d953fee25a792c5dd3fbb91e436",
-      "pythonSize": 34279276
+      "pythonSha256": "27a12ba64c67abcbacfd76c60e8103bed4fa84f3cbfe7ff57ab32e6998909d8d",
+      "pythonSize": 34277143
     },
     "linux-aarch64": {
       "path": "runtimes/linux-aarch64/zsharp",
-      "sha256": "308a06a390b73c43d30016296a87fd37f0730bc01035e79cc37b8cf5f4036762",
-      "size": 6927608,
+      "sha256": "b357bd4a833dae48c6517234a61616e7dddab8c58f7c378e68ca731b360ec6cf",
+      "size": 7063376,
       "pythonPath": "runtimes/linux-aarch64/python-runtime.tar.gz",
-      "pythonSha256": "a22297bbf6e49cad74411b826477fae21f649827c9b0b037ef87569d957bb59e",
-      "pythonSize": 28759306
+      "pythonSha256": "134421b0da7b5c3f181bbe8c3333ca24ce1bd29d631a5426c23f36ddaaff99a7",
+      "pythonSize": 28759334
     },
     "macos-x86_64": {
       "path": "runtimes/macos-x86_64/zsharp",
-      "sha256": "3d4f6ffa0d8308e0dd8436c295f1d23514801f091a81304cd7e3a7f6baa3dc5e",
-      "size": 5488664,
+      "sha256": "490669c296d97d48a223db30d4ea60215d03a1597b5d004504deb8cee845e88d",
+      "size": 5616992,
       "pythonPath": "runtimes/macos-x86_64/python-runtime.tar.gz",
-      "pythonSha256": "85aacd30c050e7566dc449b52993dff6bd58fca1733fcd7e7134beee98a8ea97",
-      "pythonSize": 24601968,
+      "pythonSha256": "53ae7d8ec65c908836b98b9d30d92f30e56540dafec8d2d96e9d1c878898336a",
+      "pythonSize": 24602226,
       "supportPath": "runtimes/macos-x86_64/libMoltenVK.dylib",
       "supportSha256": "aef00b13bcc808adf15b85bef9ae67393d92be7ed5dfe41cad16fa809e4a4c5f",
       "supportSize": 10925552
     },
     "macos-aarch64": {
       "path": "runtimes/macos-aarch64/zsharp",
-      "sha256": "3cc3506a0860d9c769e91c90c2b774d52f77fa922b0de5ca2e95ef8be94980bc",
-      "size": 5042760,
+      "sha256": "2ce7e975485f774b0df1dfcfaff481fd9f120f751a493b96239374de49aa08c8",
+      "size": 5163736,
       "pythonPath": "runtimes/macos-aarch64/python-runtime.tar.gz",
-      "pythonSha256": "8caf350898b9b234e5a8408ab5e242f82eac2acf743882e2c5bb36db77a6a0af",
-      "pythonSize": 24726039,
+      "pythonSha256": "aad38c1ed540b02b06f9fba7404073afe3f894dabaf27926263b00856e814d63",
+      "pythonSize": 24726518,
       "supportPath": "runtimes/macos-aarch64/libMoltenVK.dylib",
       "supportSha256": "aef00b13bcc808adf15b85bef9ae67393d92be7ed5dfe41cad16fa809e4a4c5f",
       "supportSize": 10925552
