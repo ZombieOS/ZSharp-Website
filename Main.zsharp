@@ -1,0 +1,78 @@
+zsharp = type.script
+noticed room Main[] (
+ import ZSharp.Browser():
+ import zsharp_website.Secondary():
+ noticed number Counter = 0:
+ noticed status Timing = dead:
+ noticed status Swapped = dead:
+ noticed brain Start[] (
+  Browser.runtime.content.set: "● bZVM ready · interactions powered by Z#":
+  Browser.increment.clicked: (
+   number.set:Counter = Counter + 1:
+   Browser.count.content.set: "" + Counter:
+  ):
+  Browser.reset.clicked: (
+   number.set:Counter = 0:
+   Browser.count.content.set: "0":
+  ):
+  Browser.greet.clicked: Function.call(Main:Main:Greet):
+  Browser.startTimer.clicked: Function.call(Main:Main:Countdown):
+  Browser.check.clicked: Function.call(Main:Main:Check):
+  Browser.calculate.clicked: Function.call(Main:Main:Calculate):
+  Browser.swap.clicked: Function.call(Main:Main:Swap):
+  Function.call(Main:Main:Calculate):
+ )
+ noticed brain Greet[] (
+  if[Browser.input.value == ""] (
+   Browser.greeting.content.set: "Enter a name first.":
+  ) else (
+   text Greeting = Function.call(Secondary:Secondary:Greeting [Browser.input.value]):
+   Browser.greeting.content.set: Greeting:
+  )
+ )
+ noticed brain Countdown[] (
+  if[Timing == dead] (
+   Timing = alive:
+   Browser.timer.content.set: "3":
+   wait(1s):
+   Browser.timer.content.set: "2":
+   wait(1s):
+   Browser.timer.content.set: "1":
+   wait(1s):
+   Browser.timer.content.set: "Done!":
+   Timing = dead:
+  )
+ )
+ noticed brain Check[] (
+  if[Regex.test(Browser.code.value, "^[A-Z]{3}[0-9]{3}$")] (
+   Browser.validation.content.set: "Valid code: " + Browser.code.value:
+   Browser.validation.style.color.set: "#a4f276":
+  ) else if[Browser.code.value == ""] (
+   Browser.validation.content.set: "Enter a code first.":
+   Browser.validation.style.color.set: "#ffcf7a":
+  ) else (
+   Browser.validation.content.set: "Not valid. Use three capitals + three digits.":
+   Browser.validation.style.color.set: "#ff9c9c":
+  )
+ )
+ noticed brain Calculate[] (
+  Browser.decimal.content.set: "" + (0.1 + 0.2):
+  Browser.power.content.set: "" + Math.pow(10, 5):
+  Browser.large.content.set: "" + (100000000000000000001 + 1):
+ )
+ noticed brain Swap[] (
+  if[Swapped == dead] (
+   Browser.preview.html.set: '''
+    <strong>Written by Z#.</strong><p>Only this box's inner HTML changed.</p>
+   ''':
+   Browser.preview.style.background.set: "#223625":
+   Swapped = alive:
+  ) else (
+   Browser.preview.html.set: '''
+    <strong>Original content</strong><p>This box is the target.</p>
+   ''':
+   Browser.preview.style.background.set: "transparent":
+   Swapped = dead:
+  )
+ )
+)

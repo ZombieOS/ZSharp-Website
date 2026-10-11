@@ -1,0 +1,14 @@
+zsharp = type.script
+
+noticed room Secondary[] (
+    import ZSharp.Browser():
+
+    noticed text Greeting[text Name] (
+        feed("Hello, " + Name + "! This came from Secondary.zsharp."):
+    )
+
+    noticed brain Run[] (
+        Browser.bartitle.content.set: "Z#!":
+        Print("hi"):
+    )
+)
