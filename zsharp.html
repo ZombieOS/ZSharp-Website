@@ -1,13 +1,233 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Z# • Browser Lab</title><link rel="stylesheet" href="ZSharpStyle.css"></head>
-<body><header><a class="brand" href="#"><b id="bartitle">Z#</b> Browser Lab</a><span class="badge">1.2.2.0</span></header><main>
-<section class="intro"><p class="eyebrow">BUILT WITH Z# + WEBASSEMBLY</p><h1>Small tests.<br><span>Real Z#.</span></h1><p class="lead">A playground for the browser VM. Every interaction below is handled by a Z# script.</p><p class="runtime" id="runtime">● Loading bZVM…</p></section>
-<section class="grid">
-<article><div class="meta">01 / STATE <span>Persistent variables</span></div><h2>Keep count</h2><p>The value stays in the room between clicks.</p><output class="big" id="count">0</output><div><button id="increment">+ Add one</button> <button class="secondary" id="reset">Reset</button></div></article>
-<article><div class="meta">02 / FUNCTIONS <span>Multi-file + returns</span></div><h2>A personal hello</h2><p>Your name goes to a typed function in Secondary.zsharp.</p><label for="input">Your name</label><input id="input" placeholder="Astroid" maxlength="80"><button id="greet">Say hello →</button><output id="greeting" class="result" aria-live="polite">Waiting for a name.</output></article>
-<article><div class="meta">03 / TASKS <span>Non-blocking wait</span></div><h2>Take three seconds</h2><p>Try the counter while this countdown is running.</p><output class="big" id="timer">Ready</output><button id="startTimer">Start countdown</button></article>
-<article><div class="meta">04 / REGEX <span>Conditions + matching</span></div><h2>Check a lab code</h2><p>Use three capital letters followed by three digits.</p><label for="code">Code to test</label><input id="code" value="ZOS123" placeholder="ZOS123" maxlength="80"><button id="check">Check code →</button><output class="result" id="validation" aria-live="polite">Try ZOS123, then something invalid.</output></article>
-<article class="wide"><div class="meta">05 / NUMBERS <span>Math + exact decimals</span></div><h2>No floating-point surprise</h2><p>Calculated by Z#, not hardcoded into the page.</p><div class="numbers"><div><code>0.1 + 0.2</code><output id="decimal">—</output></div><div><code>Math.pow(10, 5)</code><output id="power">—</output></div><div><code>100000000000000000001 + 1</code><output id="large">—</output></div></div><button class="secondary" id="calculate">Run calculations again</button></article>
-<article><div class="meta">06 / DOM <span>HTML + style</span></div><h2>Swap the inside</h2><p>Replace inner HTML without replacing the card.</p><div class="preview" id="preview"><strong>Original content</strong><p>This box is the target.</p></div><button id="swap">Swap content & color</button></article>
-</section><footer>HTML for structure. CSS for style. Z# for behavior.<span></span></footer></main>
-<script src="bzvm.js" defer></script><script type="text/zsharp" src="Main.zsharp"></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Z# • Browser Lab</title>
+    <meta name="description" content="Try the Z# browser VM: state, functions, exact decimals, Time, DOM events, networking and typed JSON." />
+    <link rel="icon" href="zsharp.png" />
+    <link rel="stylesheet" href="ZSharpStyle.css?v=1.3.0.0" />
+    <link rel="stylesheet" href="ZSharpTimeStyle.css?v=1.3.0.0" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/"><b id="bartitle">Z#</b> Browser Lab</a>
+      <nav class="lab-links" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/download">Get Z#</a>
+        <span class="badge">1.3.0.0</span>
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">BUILT WITH Z# + WEBASSEMBLY</p>
+        <h1>Small tests.<br /><span>Real Z#.</span></h1>
+        <p class="lead">
+          A playground for the browser VM. Every interaction below is handled by
+          a Z# script.
+        </p>
+        <p class="runtime" id="runtime">● Loading bZVM…</p>
+      </section>
+      <section class="grid">
+        <article>
+          <div class="meta">01 / STATE <span>Persistent variables</span></div>
+          <h2>Keep count</h2>
+          <p>The value stays in the room between clicks.</p>
+          <output class="big" id="count">0</output>
+          <div>
+            <button id="increment">+ Add one</button>
+            <button class="secondary" id="reset">Reset</button>
+          </div>
+        </article>
+        <article>
+          <div class="meta">
+            02 / FUNCTIONS <span>Multi-file + returns</span>
+          </div>
+          <h2>A personal hello</h2>
+          <p>Your name goes to a typed function in Secondary.zsharp.</p>
+          <label for="input">Your name</label
+          ><input id="input" placeholder="Astroid" maxlength="80" /><button
+            id="greet"
+          >
+            Say hello →</button
+          ><output id="greeting" class="result" aria-live="polite"
+            >Waiting for a name.</output
+          >
+        </article>
+        <article>
+          <div class="meta">03 / TASKS <span>Non-blocking wait</span></div>
+          <h2>Take three seconds</h2>
+          <p>Try the counter while this countdown is running.</p>
+          <output class="big" id="timer">Ready</output
+          ><button id="startTimer">Start countdown</button>
+        </article>
+        <article>
+          <div class="meta">04 / REGEX <span>Conditions + matching</span></div>
+          <h2>Check a lab code</h2>
+          <p>Use three capital letters followed by three digits.</p>
+          <label for="code">Code to test</label
+          ><input
+            id="code"
+            value="ZOS123"
+            placeholder="ZOS123"
+            maxlength="80"
+          /><button id="check">Check code →</button
+          ><output class="result" id="validation" aria-live="polite"
+            >Try ZOS123, then something invalid.</output
+          >
+        </article>
+        <article class="wide">
+          <div class="meta">
+            05 / NUMBERS <span>Math + exact decimals</span>
+          </div>
+          <h2>No floating-point surprise</h2>
+          <p>Calculated by Z#, not hardcoded into the page.</p>
+          <div class="numbers">
+            <div><code>0.1 + 0.2</code><output id="decimal">—</output></div>
+            <div><code>Math.pow(10, 5)</code><output id="power">—</output></div>
+            <div>
+              <code>100000000000000000001 + 1</code
+              ><output id="large">—</output>
+            </div>
+          </div>
+          <button class="secondary" id="calculate">
+            Run calculations again
+          </button>
+        </article>
+        <article>
+          <div class="meta">06 / DOM <span>HTML + style</span></div>
+          <h2>Swap the inside</h2>
+          <p>Replace inner HTML without replacing the card.</p>
+          <div class="preview" id="preview">
+            <strong>Original content</strong>
+            <p>This box is the target.</p>
+          </div>
+          <button id="swap">Swap content & color</button>
+        </article>
+        <article class="wide">
+          <div class="meta">07 / LOCAL TIME <span>Live getters</span></div>
+          <h2>Your time, from Z#</h2>
+          <p>
+            Uses this browser's local timezone. Refreshes every 100 ms with a Z#
+            wait.
+          </p>
+          <output id="localclock" class="big">Loading…</output>
+          <div class="numbers">
+            <div>
+              <code>getYear / getMonth / getDay</code
+              ><output id="localdate">—</output>
+            </div>
+            <div><code>getWeek()</code><output id="weekday">—</output></div>
+            <div>
+              <code>getHour().formatted</code
+              ><output id="hourformatted">—</output>
+            </div>
+            <div>
+              <code>getMS() / getMS(2) / getMS(3)</code
+              ><output id="precision">—</output>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="meta">08 / UNIX TIME <span>Convert + relative</span></div>
+          <h2>Pick a moment</h2>
+          <p>
+            Convert a date to Unix seconds, then compare it to now. Try a past
+            and a future date.
+          </p>
+          <label for="timedate">Date (year-month-day)</label>
+          <input
+            id="timedate"
+            type="date"
+            value="2026-01-01"
+            min="0001-01-01"
+            max="9999-12-31"
+          />
+          <label for="timeclock">Time (24-hour)</label>
+          <input id="timeclock" type="time" value="00:00:00" step="1" />
+          <label for="timezone">Timezone</label>
+          <select id="timezone">
+            <option value="UTC">UTC</option>
+            <option value="LOCAL">Your local timezone</option>
+            <option value="UTC+05:30">UTC+05:30</option>
+            <option value="UTC-04:00">UTC-04:00</option>
+          </select>
+          <button id="converttime">Convert & compare →</button>
+          <output id="unixtime" class="result" aria-live="polite">—</output>
+          <output id="since" class="result">—</output>
+          <output id="until" class="result">—</output>
+          <output id="timeerror" class="result" role="alert"></output>
+        </article>
+        <article>
+          <div class="meta">09 / EVENTS <span>Input + submit</span></div>
+          <h2>More than clicks</h2>
+          <form id="eventform">
+            <label for="eventinput">Type something, then press Enter</label>
+            <input id="eventinput" placeholder="Try typing here" />
+            <select id="eventoption" aria-label="Example option">
+              <option value="First">First option</option>
+              <option value="Second">Second option</option>
+            </select>
+            <button type="submit">Submit without reload →</button>
+          </form>
+          <output id="eventresult" class="result" aria-live="polite">Waiting for an event.</output>
+          <button id="startkeys">Start keyboard + pointer monitor →</button>
+          <output id="keyboardresult" class="result">Start the monitor, then tap E — even a short tap is retained.</output>
+          <output id="pointerresult" class="result">Pointer: —</output>
+          <output id="platforminfo" class="result">Platform: —</output>
+        </article>
+        <article>
+          <div class="meta">10 / DOM <span>Selectors + attributes</span></div>
+          <h2>One ID, different tags</h2>
+          <p>The count selector updates the first two matching IDs, regardless of tag. Repeated IDs here are deliberate test fixtures.</p>
+          <div id="duplicate" class="result">A div · original</div>
+          <span id="duplicate" class="result">A span · original</span>
+          <div id="duplicate" class="result">Another div · stays unchanged</div>
+          <button id="attrtest">Update first two + read all classes →</button>
+          <output id="attrresult" class="result">No changes yet.</output>
+        </article>
+        <article>
+          <div class="meta">11 / HTTP <span>Asynchronous requests</span></div>
+          <h2>Fetch without blocking</h2>
+          <p>Fetch a public file from this site, or enter an HTTPS URL whose server permits browser requests. Requests obey browser CORS rules.</p>
+          <label for="httpurl">URL (relative or absolute)</label>
+          <input id="httpurl" value="Person.json" />
+          <div class="actions"><button id="fetchtest">Request →</button><button id="canceltest">Cancel request</button></div>
+          <output id="httpresult" class="result" aria-live="polite">Not requested.</output>
+        </article>
+        <article>
+          <div class="meta">12 / WEBSOCKETS <span>Named connections</span></div>
+          <h2>Send. Receive. Repeat.</h2>
+          <p>Enter a secure WebSocket URL for a server you control. Connect only when you are ready; this demo does not contact a socket automatically.</p>
+          <label for="socketurl">Socket URL</label>
+          <input id="socketurl" type="url" placeholder="wss://your-server.example/echo" spellcheck="false" />
+          <label for="socketinput">Message</label>
+          <input id="socketinput" value="Hello from Z#!" />
+          <div class="actions"><button id="sockettest">Connect</button><button id="socketsend">Send</button><button id="socketclose">Close</button></div>
+          <output id="socketresult" class="result" aria-live="polite">Disconnected.</output>
+        </article>
+        <article>
+          <div class="meta">13 / JSON <span>Desktop syntax, browser runtime</span></div>
+          <h2>Load a typed project file</h2>
+          <p>A filename variable loads a JSON file without blocking the page. Keys and types must match the declared schema. Large decimal values retain their digits.</p>
+          <label for="jsonpath">Project-relative JSON filename</label>
+          <input id="jsonpath" value="Person.json" />
+          <button id="loadjson">Load JSON →</button>
+          <output id="jsonresult" class="result" aria-live="polite">Ready to load Person.json.</output>
+        </article>
+      </section>
+      <footer>
+        HTML for structure. CSS for style. Z# for behavior.<span
+          >Z# 1.3.0.0 · bZVM prototype</span
+        >
+      </footer>
+    </main>
+    <script>
+      window.addEventListener("bzvm:error", function (event) {
+        document.getElementById("timeerror").textContent = event.detail;
+      });
+    </script>
+    <script src="bzvm.js?v=1.3.0.0" defer></script>
+    <script type="text/zsharp" src="Main.zsharp?v=1.3.0.0"></script>
+  </body>
+</html>

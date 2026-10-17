@@ -1,0 +1,84 @@
+zsharp = type.script
+
+noticed room Network[] (
+ import ZSharp.Browser():
+ import ZSharp.HTTP():
+ import ZSharp.Websocket():
+
+ noticed number Presses = 0:
+ noticed number Releases = 0:
+ noticed status Watching = dead:
+
+ noticed brain Setup[] (
+  Browser.platforminfo.content.set: "Platform: " + Browser.platform:
+  Browser.fetchtest.clicked: Function.call(Network:Network:Fetch):
+  Browser.canceltest.clicked: ( HTTP.requestCancel("Demo"): ):
+  Browser.sockettest.clicked: Function.call(Network:Network:Connect):
+  Browser.socketsend.clicked: ( Websocket.send("Demo", Browser.socketinput.getInput): ):
+  Browser.socketclose.clicked: ( Websocket.close("Demo"): ):
+  Browser.attrtest.clicked: (
+   Browser.duplicate[2].content.set: "First two updated by Z#":
+   text() Classes = Browser.duplicate[*].getattr[class]:
+   Browser.attrresult.content.set: "Matched " + Classes.Length + " elements (div + span + div).":
+   Browser.attrresult.setattr[title]: "Written with setattr":
+  ):
+  Browser.eventinput.inputted: (
+   Browser.eventresult.content.set: "Input: " + Browser.eventinput.getInput:
+  ):
+  Browser.eventoption.changed: (
+   Browser.eventresult.content.set: "Selected: " + Browser.eventoption.getOption:
+  ):
+  Browser.eventform.submitted: (
+   Browser.eventresult.content.set: "Form submitted without reloading the page.":
+  ):
+  Browser.startkeys.clicked: (
+   if[Watching == dead] (
+    Watching = alive:
+    Function.call(Network:Network:Watch):
+   ) else ()
+  ):
+ )
+ noticed brain Watch[] (
+  loop (
+   if[Browser.input.e.pressed] ( number.set:Presses = Presses + 1: ) else ()
+   if[Browser.input.e.released] ( number.set:Releases = Releases + 1: ) else ()
+   Browser.keyboardresult.content.set: "E held: " + Browser.input.e.held + " | presses: " + Presses + " | releases: " + Releases:
+   Browser.pointerresult.content.set: "Pointer: " + Browser.pointer.xpos + ", " + Browser.pointer.ypos:
+   wait(100ms):
+  )
+ )
+ noticed brain Fetch[] (
+  Browser.httpresult.content.set: "Requesting…":
+  HTTP.request(
+   name: "Demo":
+   method: "GET":
+   url: Browser.httpurl.getInput:
+   timeout: 5s:
+   onResponse: [Network:Network:Response]:
+   onError: [Network:Network:Failed]:
+  ):
+ )
+ noticed brain Response[number Status, text Body] (
+  Browser.httpresult.content.set: "HTTP " + Status + " · " + Body:
+ )
+ noticed brain Failed[text Message] (
+  Browser.httpresult.content.set: Message:
+ )
+ noticed brain Connect[] (
+  text URL = Browser.socketurl.getInput:
+  if[Regex.test(URL, "^wss://")] (
+   Browser.socketresult.content.set: "Connecting…":
+   Websocket.connect(URL, "Demo"):
+   Websocket.connected("Demo", [Network:Network:Opened]):
+   Websocket.callback("Demo", [Network:Network:Message]):
+   Websocket.error("Demo", [Network:Network:SocketError]):
+   Websocket.closed("Demo", [Network:Network:Closed]):
+  ) else (
+   Browser.socketresult.content.set: "Enter a secure wss:// URL for your WebSocket server first.":
+  )
+ )
+ noticed brain Opened[] ( Browser.socketresult.content.set: "Connected. Send a message to echo it back.": )
+ noticed brain Message[text Message] ( Browser.socketresult.content.set: "Received: " + Message: )
+ noticed brain SocketError[text Message] ( Browser.socketresult.content.set: Message: )
+ noticed brain Closed[number Code, text Reason] ( Browser.socketresult.content.set: "Closed " + Code + " " + Reason: )
+)

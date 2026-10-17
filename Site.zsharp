@@ -1,0 +1,84 @@
+zsharp = type.script
+
+// The shared website's normal download behaviour runs in the bZVM.
+// Script.js bridges browser metadata/pointer details and keeps a fallback
+// available if WebAssembly cannot start. Main.js remains the release config.
+noticed room Site[] (
+    import ZSharp.Browser():
+
+    noticed text Version = "":
+    noticed text InstallerRoot = "":
+
+    noticed brain Start[] (
+        JavaScript[(
+            window.ZSharpSiteBridge.start();
+        )]:
+
+        text.set.Version = Browser.siteConfig.getattr[version]:
+        text.set.InstallerRoot = Browser.siteConfig.getattr[installerRoot]:
+
+        if[Browser.siteConfig.getattr[downloads] == "alive"] (
+            Browser.downloadSystem.changed: Function.call(Site:Site:UpdateDownload):
+            Browser.downloadArchitecture.changed: Function.call(Site:Site:UpdateDownload):
+            Browser.testAppDownload.setattr[href]: Browser.siteConfig.getattr[testAppUrl]:
+            Browser.testGameDownload.setattr[href]: Browser.siteConfig.getattr[testGameUrl]:
+            Function.call(Site:Site:UpdateDownload):
+        ) else ()
+
+        JavaScript[(
+            window.ZSharpSiteBridge.ready();
+        )]:
+    )
+
+    noticed brain UpdateDownload[] (
+        // If the bZVM reports a later error, its already-bound callbacks must
+        // not race the JavaScript fallback for the same link.
+        if[Browser.siteConfig.getattr[engine] != "fallback"] (
+            text Platform = Browser.downloadSystem.getOption:
+            text Processor = Browser.downloadArchitecture.getOption:
+            text PlatformName = "Windows":
+            text ProcessorName = "64-bit":
+
+            if[Platform != "windows" and Platform != "linux" and Platform != "macos" and Platform != "chromeos"] (
+                text.set.Platform = "windows":
+                Browser.downloadSystem.value.set: Platform:
+            ) else ()
+            if[Processor != "x86_64" and Processor != "aarch64"] (
+                text.set.Processor = "x86_64":
+                Browser.downloadArchitecture.value.set: Processor:
+            ) else ()
+            if[Processor == "aarch64"] (
+                text.set.ProcessorName = "ARM64":
+            ) else ()
+
+            if[Platform == "linux"] (
+                text.set.PlatformName = "Linux":
+            ) else if[Platform == "macos"] (
+                text.set.PlatformName = "macOS":
+            ) else if[Platform == "chromeos"] (
+                text.set.PlatformName = "ChromeOS":
+            ) else ()
+
+            text DownloadPlatform = Platform:
+            if[Platform == "chromeos"] (
+                text.set.DownloadPlatform = "linux":
+            ) else ()
+
+            text Executable = "zsharp-installer":
+            if[DownloadPlatform == "macos"] (
+                text.set.Executable = "zsharp-setup-" + Version + "-macos-" + Processor + ".app.zip":
+            ) else if[DownloadPlatform == "windows"] (
+                text.set.Executable = "zsharp-installer.exe":
+            ) else ()
+
+            Browser.installerDownload.setattr[href]: InstallerRoot + "/" + Version + "/" + DownloadPlatform + "-" + Processor + "/" + Executable:
+            if[Platform == "chromeos"] (
+                Browser.detectedSystem.content.set: "ChromeOS Linux environment · " + ProcessorName + " · compatibility varies":
+                Browser.installerLabel.content.set: "Download Linux build for ChromeOS":
+            ) else (
+                Browser.detectedSystem.content.set: "Selected for " + PlatformName + " · " + ProcessorName:
+                Browser.installerLabel.content.set: "Download for " + PlatformName:
+            )
+        ) else ()
+    )
+)

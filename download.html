@@ -6,8 +6,10 @@
   <meta name="description" content="Download the Z# Virtual Machine for Windows, Linux, and macOS.">
   <link rel="icon" href="zsharp.png?v=1.0.2.0">
   <link rel="stylesheet" href="Style.css?v=1.0.2.0">
-  <script src="Main.js?v=1.2.1.0" defer></script>
-  <script src="Script.js?v=1.2.0.0-chromeos2" defer></script>
+  <script src="/Main.js?v=1.3.0.0" defer></script>
+  <script src="/Script.js?v=1.3.0.0" defer></script>
+  <script src="/bzvm.js?v=1.3.0.0" defer></script>
+  <script type="text/zsharp" src="/Site.zsharp?v=1.3.0.0"></script>
   <title>Download Z#</title>
 </head>
 <body data-title="Download Z# {version}">
@@ -29,24 +31,24 @@
         <div class="downloadInfo">
           <p class="sectionLabel">LATEST RELEASE</p>
           <h2>ZVM <span data-zsharp-version></span></h2>
-          <p id="detected-system">Detecting your system…</p>
+          <p id="detectedSystem">Selected for Windows · 64-bit</p>
           <div class="downloadSelectors">
             <label>System
-              <select id="download-system"><option value="windows">Windows</option><option value="linux">Linux</option><option value="macos">macOS</option><option value="chromeos">ChromeOS (Linux environment)</option></select>
+              <select id="downloadSystem"><option value="windows">Windows</option><option value="linux">Linux</option><option value="macos">macOS</option><option value="chromeos">ChromeOS (Linux environment)</option></select>
             </label>
             <label>Processor
-              <select id="download-architecture"><option value="x86_64">Intel / AMD 64-bit</option><option value="aarch64">ARM64</option></select>
+              <select id="downloadArchitecture"><option value="x86_64">Intel / AMD 64-bit</option><option value="aarch64">ARM64</option></select>
             </label>
           </div>
-          <a class="downloadButton" id="installer-download" href="#">Download <span>↓</span></a>
+          <a class="downloadButton" id="installerDownload" href="https://www.zsharp.zombieos.com/assets/download/installers/1.3.0.0/windows-x86_64/zsharp-installer.exe"><span id="installerLabel">Download for Windows</span> <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
       <div class="afterInstall">
         <div><span class="stepBadge">AFTER INSTALLING</span><h3>Want to download our test app?</h3><p>To test if it installed correctly!</p></div>
-        <a id="test-app-download" href="#">Download Test App <span>→</span></a>
+        <a id="testAppDownload" href="https://www.zsharp.zombieos.com/assets/download/ZSharp-Test-App.zapp">Download Test App <span>→</span></a>
         <div><span class="stepBadge">AFTER INSTALLING</span><h3>Want to download our test game?</h3><p>To test if it installed correctly!</p></div>
-        <a id="test-game-download" href="#">Download Test Game <span>→</span></a>
+        <a id="testGameDownload" href="https://www.zsharp.zombieos.com/assets/download/ZSharpGameTest.zgame">Download Test Game <span>→</span></a>
       </div>
 
       <div class="installSteps">

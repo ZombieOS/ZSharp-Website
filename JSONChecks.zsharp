@@ -1,0 +1,23 @@
+zsharp = type.script
+noticed room JSONChecks[] (
+ import ZSharp.Browser():
+ import ZSharp.JSON():
+ noticed JSON PersonSchema[] (
+  name: text:
+  score: number:
+  enabled: status:
+ )
+ noticed brain Setup[] (
+  Browser.loadjson.clicked: Function.call(JSONChecks:JSONChecks:Load):
+ )
+ noticed brain Load[] (
+  text Path = Browser.jsonpath.getInput:
+  Browser.jsonresult.content.set: "Loading project JSON…":
+  if[File.exists(Path)] (
+   JSON Person = JSON.load(PersonSchema, Path):
+   Browser.jsonresult.content.set: Person.name + " | score: " + Person.score + " | enabled: " + Person.enabled:
+  ) else (
+   Browser.jsonresult.content.set: "That project file was not found.":
+  )
+ )
+)

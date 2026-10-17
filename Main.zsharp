@@ -2,10 +2,14 @@ zsharp = type.script
 noticed room Main[] (
  import ZSharp.Browser():
  import zsharp_website.Secondary():
+ import zsharp_website.Network():
+ import zsharp_website.JSONChecks():
  noticed number Counter = 0:
  noticed status Timing = dead:
  noticed status Swapped = dead:
  noticed brain Start[] (
+  Function.call(Network:Network:Setup):
+  Function.call(JSONChecks:JSONChecks:Setup):
   Browser.runtime.content.set: "● bZVM ready · interactions powered by Z#":
   Browser.increment.clicked: (
    number.set:Counter = Counter + 1:
@@ -21,6 +25,33 @@ noticed room Main[] (
   Browser.calculate.clicked: Function.call(Main:Main:Calculate):
   Browser.swap.clicked: Function.call(Main:Main:Swap):
   Function.call(Main:Main:Calculate):
+  Browser.converttime.clicked: Function.call(Main:Main:ConvertTime):
+  Function.call(Main:Main:ConvertTime):
+  Function.call(Main:Main:LiveTime):
+ )
+ noticed brain ConvertTime[] (
+  Browser.timeerror.content.set: "":
+  if[Browser.timedate.value == "" or Browser.timeclock.value == ""] (
+   Browser.timeerror.content.set: "Choose both a date and a time.":
+  ) else (
+   Browser.unixtime.content.set: "Converting…":
+   Browser.since.content.set: "":
+   Browser.until.content.set: "":
+   number Stamp = Time.convert(Browser.timedate.value, Browser.timeclock.value, Browser.timezone.value):
+   Browser.unixtime.content.set: "Unix seconds: " + Stamp:
+   Browser.since.content.set: "since: " + Time.since(Stamp):
+   Browser.until.content.set: "until: " + Time.until(Stamp):
+  )
+ )
+ noticed brain LiveTime[] (
+  loop (
+   Browser.localclock.content.set: "" + Time.getHour() + ":" + Time.getMinute() + ":" + Time.getSecond():
+   Browser.localdate.content.set: "" + Time.getYear() + " / " + Time.getMonth() + " / " + Time.getDay():
+   Browser.weekday.content.set: Time.getWeek():
+   Browser.hourformatted.content.set: Time.getHour().formatted:
+   Browser.precision.content.set: "" + Time.getMS() + " / " + Time.getMS(2) + " / " + Time.getMS(3):
+   wait(100ms):
+  )
  )
  noticed brain Greet[] (
   if[Browser.input.value == ""] (
